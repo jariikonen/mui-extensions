@@ -23,7 +23,13 @@ import { DefaultStyledListbox } from './DefaultStyledListbox';
 import OnScreenKeyboardResponsiveDialog from './OnScreenKeyboardResponsiveDialog';
 import { AutocompleteInputProxy } from './AutocompleteInputProxy';
 
-type ModalAutocompleteProps<
+/**
+ * Props for the `ModalAutocomplete` component.
+ *
+ * Accepts everything in MUI Material-UI's {@link AutocompleteProps} except
+ * `renderInput`.
+ */
+export type ModalAutocompleteProps<
   Value,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
@@ -34,6 +40,15 @@ type ModalAutocompleteProps<
   'renderInput'
 >;
 
+/**
+ * Default function for getting the label from an option.
+ *
+ * If `option` is an object with a `label` property, value of the `label` is
+ * returned. Otherwise the value is cast to a string or in case of an object
+ * stringified with `JSON.stringify()`.
+ * @param option Option to check.
+ * @returns A string value to use as a label for the option.
+ */
 function defaultGetOptionLabel<Value, FreeSolo extends boolean | undefined>(
   option: Value | AutocompleteFreeSoloValueMapping<FreeSolo>,
 ): string {
@@ -54,6 +69,18 @@ function defaultGetOptionLabel<Value, FreeSolo extends boolean | undefined>(
   return String(option);
 }
 
+/**
+ * A mobile friendly autocomplete component extending MUI Material-UI's
+ * {@link https://mui.com/material-ui/react-autocomplete/ |Autocomplete}.
+ *
+ * Functions like a regular MUI Material Autocomplete, except opens a separate
+ * user interface in a responsive modal component centered on the screen, when
+ * the size of the screen is below the `sm`
+ * {@link https://mui.com/material-ui/customization/breakpoints/ |breakpoint}.
+ * Makes using the component easier on a mobile device.
+ *
+ * See {@link ModalAutocompleteProps} for the props.
+ */
 export default function ModalAutocomplete<
   Value,
   Multiple extends boolean | undefined = false,
