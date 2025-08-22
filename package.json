@@ -1,8 +1,21 @@
 {
-  "name": "mui-extensions",
-  "private": true,
+  "name": "@jariikonen/mui-extensions",
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/mui-extensions.umd.js",
+  "module": "dist/mui-extensions.es.js",
+  "types": "dist/mui-extensions.es.d.ts",
+  "files": [
+    "dist/mui-extensions.umd.js",
+    "dist/mui-extensions.es.js",
+    "dist/mui-extensions.es.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/mui-extensions.es.js",
+      "require": "./dist/mui-extensions.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
