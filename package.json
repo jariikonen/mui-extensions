@@ -1,6 +1,6 @@
 {
   "name": "@jariikonen/mui-extensions",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "main": "dist/mui-extensions.umd.js",
   "module": "dist/mui-extensions.es.js",
